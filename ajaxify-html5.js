@@ -6,7 +6,7 @@
 		$ = window.jQuery;
 
 	// Wait for Document
-	History.Adapter.onDomLoad(function(){
+	$(function(){
 		// Prepare Variables
 		var
 			$content = $('#content'),
