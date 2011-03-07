@@ -54,7 +54,7 @@
 				// Find the content in the page's html, and apply it to our current page's content
 				$content.stop(true,true).show();
 				$content.html($(data).find('#content')).ajaxify();
-				$content.ScrollTo();
+				if ( $content.ScrollTo||false ) $content.ScrollTo();
 				$body.removeClass('loading');
 
 				// Inform Google Analytics of the change
