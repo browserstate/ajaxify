@@ -11,32 +11,18 @@
 		var
 			$content = $('#content'),
 			$body = $(document.body),
-			rootUrl = document.location.protocol+'//'+(document.location.hostname||document.location.host);
+			rootUrl = History.getRootUrl();
 
 		// Ajaxify our Internal Links
-		$.fn.ajaxify = function(){
-
-			// Ajaxify internal links
-			$(this).find('a[href^="/"],a[href^="'+rootUrl+'"]').unbind('click').bind('click',function(event){
-				var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null;
-				window.History.pushState(null,title,url);
-				event.preventDefault();
-				return false;
-			});
-			
-			// Chain
-			return this;
-		};
-
-		// Ajaxify Page
-		$body.ajaxify();
+		$(this).find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
+			var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null;
+			window.History.pushState(null,title,url);
+			event.preventDefault();
+			return false;
+		});
 
 		// Hook into State Changes
-		var first = true;
 		$(window).bind('statechange',function(){
-			// Prevent Initial
-			if ( first ) { first = false; return; };
-
 			// Prepare Variables
 			var
 				State = window.History.getState(),
@@ -53,7 +39,7 @@
 			$.get(url,function(data){
 				// Find the content in the page's html, and apply it to our current page's content
 				$content.stop(true,true).show();
-				$content.html($(data).find('#content')).ajaxify();
+				$content.html($(data).find('#content'));
 				if ( $content.ScrollTo||false ) $content.ScrollTo(); // http://balupton.com/projects/jquery-scrollto
 				$body.removeClass('loading');
 
