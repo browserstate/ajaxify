@@ -5,6 +5,11 @@
 		History = window.History,
 		$ = window.jQuery;
 
+	// Check to see if History.js is enabled for our Browser
+	if ( !History.enabled ) {
+		return false;
+	}
+
 	// Wait for Document
 	$(function(){
 		// Prepare Variables
