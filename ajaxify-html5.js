@@ -20,6 +20,9 @@
 
 		// Ajaxify our Internal Links
 		$(this).find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
+			// Continue as normal for cmd clicks etc
+			if ( event.which == 2 || event.metaKey ) { return true; }
+			// Ajaxify this link
 			var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null;
 			window.History.pushState(null,title,url);
 			event.preventDefault();
