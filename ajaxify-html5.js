@@ -24,7 +24,7 @@
 			if ( event.which == 2 || event.metaKey ) { return true; }
 			// Ajaxify this link
 			var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null;
-			window.History.pushState(null,title,url);
+			History.pushState(null,title,url);
 			event.preventDefault();
 			return false;
 		});
@@ -33,7 +33,7 @@
 		$(window).bind('statechange',function(){
 			// Prepare Variables
 			var
-				State = window.History.getState(),
+				State = History.getState(),
 				url = State.url,
 				relativeUrl = url.replace(rootUrl,'');
 
