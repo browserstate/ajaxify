@@ -48,8 +48,7 @@
 			var
 				State = History.getState(),
 				url = State.url,
-				relativeUrl = url.replace(rootUrl,''),
-				data, performAjax = true;
+				relativeUrl = url.replace(rootUrl,'');
 
 			// Set Loading
 			$body.addClass('loading');
