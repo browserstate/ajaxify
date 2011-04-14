@@ -50,6 +50,19 @@
 			return isInternalLink;
 		};
 		
+		// HTML Helper
+		var documentHtml = function(html){
+			// Prepare
+			var result = String(html)
+				.replace(/<\!DOCTYPE[^>]*>/i, '')
+				.replace(/<(html|head|body|title|meta)/gi,'<div id="document-$1"')
+				.replace(/<\/(html|head|body|title|meta)/gi,'</div')
+			;
+			
+			// Return
+			return result;
+		};
+		
 		// Ajaxify Helper
 		$.fn.ajaxify = function(){
 			// Prepare
@@ -100,7 +113,7 @@
 				success: function(data, textStatus, jqXHR){
 					// Prepare
 					var
-						$data = $(data),
+						$data = $(documentHtml(data)).find('#document-body'),
 						$menuChildren, contentHtml;
 					
 					// Fetch the content
