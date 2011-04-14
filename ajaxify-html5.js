@@ -59,10 +59,14 @@
 			// Ajax Request the Traditional Page
 			$.ajax(url,{
 				success: function(data, textStatus, jqXHR){
+					// Prepare
+					var $menuChildren;
+					
 					// Update the menu
-					var $menuChildren = $menu.find(menuChildrenSelector);
+					$menuChildren = $menu.find(menuChildrenSelector);
 					$menuChildren.filter(activeSelector).removeClass(activeClass);
-					$menuChildren.has('a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').addClass(activeClass);
+					$menuChildren = $menuChildren.has('a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
+					if ( $menuChildren.length === 1 ) $menuChildren.addClass(activeClass);
 					
 					// Update the content
 					// Find the content in the page's html, and apply it to our current page's content
