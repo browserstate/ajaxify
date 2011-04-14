@@ -52,10 +52,15 @@
 		// Ajaxify our Internal Links
 		$body.find('a').filter(function(){
 			// Prepare
-			var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null, isInternalLink;
+			var
+				$this = $(this),
+				url = $this.attr('href')||'',
+				isInternalLink;
 			
 			// Check link
 			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || !(/\:/).test(url);
+			
+			// Ignore
 			return isInternalLink;
 		}).ajaxify();
 		
