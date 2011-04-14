@@ -55,10 +55,9 @@
 			$.ajax(url,{
 				success: function(data, textStatus, jqXHR){
 					// Update the menu
-					$menu
-						.find(activeSelector).removeClass(activeClass)
-						.siblings().andSelf()
-						.has('a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').addClass(activeClass);
+					var $menuChildren = $menu.children();
+					$menuChildren.filter(activeSelector).removeClass(activeClass);
+					$menuChildren.has('a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').addClass(activeClass);
 					
 					// Update the content
 					// Find the content in the page's html, and apply it to our current page's content
