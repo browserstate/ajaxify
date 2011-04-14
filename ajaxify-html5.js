@@ -109,7 +109,8 @@
 			$content.animate({opacity:0},800);
 			
 			// Ajax Request the Traditional Page
-			$.ajax(url,{
+			$.ajax({
+				url: url,
 				success: function(data, textStatus, jqXHR){
 					// Prepare
 					var
