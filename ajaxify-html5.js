@@ -49,7 +49,7 @@
 				History.pushState(null,title,url);
 				event.preventDefault();
 				return false;
-			}
+			});
 		};
 		
 		// Ajaxify our Internal Links
