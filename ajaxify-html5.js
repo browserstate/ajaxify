@@ -20,6 +20,7 @@
 			$menu = $('#menu,nav:first,.nav:first').filter(':first'),
 			activeClass = 'active selected current youarehere',
 			activeSelector = '.active,.selected,.current,.youarehere',
+			menuChildrenSelector = '> li,> ul > li',
 			/* Application Generic Variables */
 			$body = $(document.body),
 			rootUrl = History.getRootUrl();
@@ -55,7 +56,7 @@
 			$.ajax(url,{
 				success: function(data, textStatus, jqXHR){
 					// Update the menu
-					var $menuChildren = $menu.children();
+					var $menuChildren = $menu.find(menuChildrenSelector);
 					$menuChildren.filter(activeSelector).removeClass(activeClass);
 					$menuChildren.has('a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').addClass(activeClass);
 					
