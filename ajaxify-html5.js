@@ -23,9 +23,9 @@
 				easing:'swing'
 			},
 			/* Application Specific Variables */
-			contentSelector = '#content,article:first,.article:first,#main',
+			contentSelector = '#content,article:first,.article:first,.post:first',
 			$content = $(contentSelector).filter(':first')||$body,
-			$menu = $('#menu,nav:first,.nav:first').filter(':first'),
+			$menu = $('#menu,#nav,nav:first,.nav:first').filter(':first'),
 			activeClass = 'active selected current youarehere',
 			activeSelector = '.active,.selected,.current,.youarehere',
 			menuChildrenSelector = '> li,> ul > li';
@@ -68,7 +68,7 @@
 					// Fetch the content
 					contentHtml = ($data.find(contentSelector).filter(':first')||$data).html();
 					if ( !contentHtml ) {
-						document.location = url;
+						document.location.href = url;
 						return false;
 					}
 					
@@ -92,7 +92,7 @@
 					}
 				},
 				error: function(jqXHR, textStatus, errorThrown){
-					document.location = url;
+					document.location.href = url;
 					return false;
 				}
 			}); // end ajax
