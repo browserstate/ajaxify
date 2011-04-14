@@ -16,7 +16,8 @@
 		// Prepare Variables
 		var
 			/* Application Specific Variables */
-			$content = $('#content,article:first,.article:first').filter(':first'),
+			contentSelector = '#content,article:first,.article:first,#main,body',
+			$content = $(contentSelector).filter(':first'),
 			$menu = $('#menu,nav:first,.nav:first').filter(':first'),
 			activeClass = 'active selected current youarehere',
 			activeSelector = '.active,.selected,.current,.youarehere',
@@ -60,18 +61,24 @@
 			$.ajax(url,{
 				success: function(data, textStatus, jqXHR){
 					// Prepare
-					var $menuChildren;
+					var $menuChildren, contentHtml;
+					
+					// Fetch the content
+					contentHtml = $(data).find(contentSelector).filter(':first');
+					if ( !contentHtml ) {
+						document.location = url;
+						return false;
+					}
 					
 					// Update the menu
 					$menuChildren = $menu.find(menuChildrenSelector);
 					$menuChildren.filter(activeSelector).removeClass(activeClass);
 					$menuChildren = $menuChildren.has('a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-					if ( $menuChildren.length === 1 ) $menuChildren.addClass(activeClass);
+					if ( $menuChildren.length === 1 ) { $menuChildren.addClass(activeClass); }
 					
 					// Update the content
-					// Find the content in the page's html, and apply it to our current page's content
 					$content.stop(true,true);
-					$content.html($(data).find('#content')).css('opacity',100).show(); /* you could fade in here if you like */
+					$content.html(html).css('opacity',100).show(); /* you could fade in here if you'd like */
 					
 					// Complete the change
 					if ( $content.ScrollTo||false ) { $content.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
@@ -83,8 +90,8 @@
 					}
 				},
 				error: function(jqXHR, textStatus, errorThrown){
-					//alert('An error occurred loading in your content: '+errorThrown);
 					document.location = url;
+					return false;
 				}
 			}); // end ajax
 
