@@ -35,12 +35,33 @@
 			$content = $body;
 		}
 		
+		// Internal Helper
+		$.expr[':'].internal = function(obj, index, meta, stack){
+			// Prepare
+			var
+				$this = $(obj),
+				url = $this.attr('href')||'',
+				isInternalLink;
+			
+			// Check link
+			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || (/[^\:]/).test(url);
+			
+			// Ignore or Keep
+			return isInternalLink;
+		};
+		
 		// Ajaxify Helper
 		$.fn.ajaxify = function(){
-			// Add the onclick handler
-			return $(this).click(function(event){
+			// Prepare
+			var $this = $(this);
+			
+			// Ajaxify
+			$this.find('a:internal').click(function(event){
 				// Prepare
-				var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null;
+				var
+					$this = $(this),
+					url = $this.attr('href'),
+					title = $this.attr('title')||null;
 				
 				// Continue as normal for cmd clicks etc
 				if ( event.which == 2 || event.metaKey ) { return true; }
@@ -50,22 +71,13 @@
 				event.preventDefault();
 				return false;
 			});
+			
+			// Chain
+			return $this;
 		};
 		
 		// Ajaxify our Internal Links
-		$body.find('a').filter(function(){
-			// Prepare
-			var
-				$this = $(this),
-				url = $this.attr('href')||'',
-				isInternalLink;
-			
-			// Check link
-			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || (/[^\:]/).test(url);
-			
-			// Ignore
-			return isInternalLink;
-		}).ajaxify();
+		$body.ajaxify();
 		
 		// Hook into State Changes
 		$(window).bind('statechange',function(){
