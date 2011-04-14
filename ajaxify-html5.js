@@ -15,20 +15,25 @@
 	$(function(){
 		// Prepare Variables
 		var
+			/* Application Specific Variables */
+			contentSelector = '#content,article:first,.article:first,.post:first',
+			$content = $(contentSelector).filter(':first'),
+			$menu = $('#menu,#nav,nav:first,.nav:first').filter(':first'),
+			activeClass = 'active selected current youarehere',
+			activeSelector = '.active,.selected,.current,.youarehere',
+			menuChildrenSelector = '> li,> ul > li',
 			/* Application Generic Variables */
 			$body = $(document.body),
 			rootUrl = History.getRootUrl(),
 			scrollOptions = {
 				duration: 800,
 				easing:'swing'
-			},
-			/* Application Specific Variables */
-			contentSelector = '#content,article:first,.article:first,.post:first',
-			$content = $(contentSelector).filter(':first')||$body,
-			$menu = $('#menu,#nav,nav:first,.nav:first').filter(':first'),
-			activeClass = 'active selected current youarehere',
-			activeSelector = '.active,.selected,.current,.youarehere',
-			menuChildrenSelector = '> li,> ul > li';
+			};
+		
+		// Ensure Content
+		if ( $content.length === 0 ) {
+			$content = $body;
+		}
 		
 		// Ajaxify our Internal Links
 		$body.find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
