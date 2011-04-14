@@ -61,7 +61,7 @@
 				isInternalLink;
 			
 			// Check link
-			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || !(/\:/).test(url);
+			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || (/[^\:]/).test(url);
 			
 			// Ignore
 			return isInternalLink;
