@@ -15,8 +15,8 @@
 	$(function(){
 		// Prepare Variables
 		var
-			$content = $('#content,article:first').filter('first'), /* really this should just point to an id */
-			$menu = $('#menu,nav:first').filter('first'), /* really this should just point to a id */
+			$content = $('#content,article:first').filter(':first'), /* really this should just point to an id */
+			$menu = $('#menu,nav:first').filter(':first'), /* really this should just point to a id */
 			activeClass = 'active selected current youarehere', /* really this should just be one class */
 			activeSelector = '.active,.selected,.current,.youarehere', /* really this should just be one class */
 			$body = $(document.body),
