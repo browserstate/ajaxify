@@ -17,8 +17,20 @@
 		var
 			$content = $('#content'),
 			$body = $(document.body),
-			rootUrl = History.getRootUrl();
+			rootUrl = History.getRootUrl(),
+			loadPage = function(data){
+				// Find the content in the page's html, and apply it to our current page's content
+				$content.stop(true,true).show();
+				$content.html($(data).find('#content'));
+				if ( $content.ScrollTo||false ) { $content.ScrollTo(); } /* http://balupton.com/projects/jquery-scrollto */
+				$body.removeClass('loading');
 
+				// Inform Google Analytics of the change
+				if ( typeof window.pageTracker !== 'undefined' ) {
+					window.pageTracker._trackPageview(relativeUrl);
+				}
+			};
+		
 		// Ajaxify our Internal Links
 		$body.find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
 			// Continue as normal for cmd clicks etc
@@ -36,7 +48,8 @@
 			var
 				State = History.getState(),
 				url = State.url,
-				relativeUrl = url.replace(rootUrl,'');
+				relativeUrl = url.replace(rootUrl,''),
+				data, performAjax = true;
 
 			// Set Loading
 			$body.addClass('loading');
@@ -46,19 +59,10 @@
 			
 			// Ajax Request the Traditional Page
 			$.ajax(url,{
-				'success': function(data, textStatus, jqXHR){
-					// Find the content in the page's html, and apply it to our current page's content
-					$content.stop(true,true).show();
-					$content.html($(data).find('#content'));
-					if ( $content.ScrollTo||false ) $content.ScrollTo(); // http://balupton.com/projects/jquery-scrollto
-					$body.removeClass('loading');
-	
-					// Inform Google Analytics of the change
-					if ( typeof pageTracker !== 'undefined' ) {
-						pageTracker._trackPageview(relativeUrl);
-					}
+				success: function(data, textStatus, jqXHR){
+					loadPage(data);
 				},
-				'error': function(jqXHR, textStatus, errorThrown){
+				error: function(jqXHR, textStatus, errorThrown){
 					//alert('An error occurred: '+errorThrown);
 					document.location = url;
 				}
