@@ -23,7 +23,11 @@
 			menuChildrenSelector = '> li,> ul > li',
 			/* Application Generic Variables */
 			$body = $(document.body),
-			rootUrl = History.getRootUrl();
+			rootUrl = History.getRootUrl(),
+			scrollOptions = {
+				duration: 800,
+				easing:'swing'
+			};
 		
 		// Ajaxify our Internal Links
 		$body.find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
@@ -66,7 +70,7 @@
 					$content.html($(data).find('#content')).css('opacity',100).show(); /* you could fade in here if you like */
 					
 					// Complete the change
-					if ( $content.ScrollTo||false ) { $content.ScrollTo(); } /* http://balupton.com/projects/jquery-scrollto */
+					if ( $content.ScrollTo||false ) { $content.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
 					$body.removeClass('loading');
 	
 					// Inform Google Analytics of the change
