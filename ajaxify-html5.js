@@ -35,17 +35,30 @@
 			$content = $body;
 		}
 		
-		// Ajaxify our Internal Links
-		$body.find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
+		// Ajaxify Helper
+		$.fn.ajaxify = function(){
+			// Prepare
+			var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null;
+			
 			// Continue as normal for cmd clicks etc
 			if ( event.which == 2 || event.metaKey ) { return true; }
+			
 			// Ajaxify this link
-			var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null;
 			History.pushState(null,title,url);
 			event.preventDefault();
 			return false;
-		});
-
+		};
+		
+		// Ajaxify our Internal Links
+		$body.find('a').filter(function(){
+			// Prepare
+			var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null, isInternalLink;
+			
+			// Check link
+			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || (/^[^.]/.test(url) && /\:/.test(url) === false);
+			return isInternalLink;
+		}).ajaxify();
+		
 		// Hook into State Changes
 		$(window).bind('statechange',function(){
 			// Prepare Variables
@@ -80,12 +93,12 @@
 					// Update the menu
 					$menuChildren = $menu.find(menuChildrenSelector);
 					$menuChildren.filter(activeSelector).removeClass(activeClass);
-					$menuChildren = $menuChildren.has('a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
+					$menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"],a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
 					if ( $menuChildren.length === 1 ) { $menuChildren.addClass(activeClass); }
 					
 					// Update the content
 					$content.stop(true,true);
-					$content.html(contentHtml).css('opacity',100).show(); /* you could fade in here if you'd like */
+					$content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
 					
 					// Complete the change
 					if ( $content.ScrollTo||false ) { $content.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
