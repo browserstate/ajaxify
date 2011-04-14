@@ -17,8 +17,8 @@
 		var
 			$content = $('#content,article:first').filter('first'), /* really this should just point to an id */
 			$menu = $('#menu,nav:first').filter('first'), /* really this should just point to a id */
-			activeClass = 'active selected current', /* really this should just be one class */
-			activeSelector = '.active,.selected,.current', /* really this should just be one class */
+			activeClass = 'active selected current youarehere', /* really this should just be one class */
+			activeSelector = '.active,.selected,.current,.youarehere', /* really this should just be one class */
 			$body = $(document.body),
 			rootUrl = History.getRootUrl();
 		
@@ -56,7 +56,7 @@
 					$menu
 						.find(activeSelector).removeClass(activeClass)
 						.siblings().andSelf()
-						.find('a[href^="'+relativeUrl+"],a[href^="'+url+'"]').addClass(activeClass);
+						.find('a[href^="'+relativeUrl+'"],a[href^="'+url+'"]').addClass(activeClass);
 					
 					// Update the content
 					// Find the content in the page's html, and apply it to our current page's content
