@@ -38,7 +38,7 @@
 		// Ajaxify Helper
 		$.fn.ajaxify = function(){
 			// Add the onclick handler
-			return $(this).click(function(){
+			return $(this).click(function(event){
 				// Prepare
 				var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null;
 				
