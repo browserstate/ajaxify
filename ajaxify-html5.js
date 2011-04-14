@@ -1,5 +1,5 @@
 (function(window,undefined){
-
+	
 	// Prepare our Variables
 	var
 		History = window.History,
@@ -15,21 +15,12 @@
 	$(function(){
 		// Prepare Variables
 		var
-			$content = $('#content'),
+			$content = $('#content,article:first').filter('first'), /* really this should just point to an id */
+			$menu = $('#menu,nav:first').filter('first'), /* really this should just point to a id */
+			activeClass = 'active selected current', /* really this should just be one class */
+			activeSelector = '.active,.selected,.current', /* really this should just be one class */
 			$body = $(document.body),
-			rootUrl = History.getRootUrl(),
-			loadPage = function(data){
-				// Find the content in the page's html, and apply it to our current page's content
-				$content.stop(true,true).show();
-				$content.html($(data).find('#content'));
-				if ( $content.ScrollTo||false ) { $content.ScrollTo(); } /* http://balupton.com/projects/jquery-scrollto */
-				$body.removeClass('loading');
-
-				// Inform Google Analytics of the change
-				if ( typeof window.pageTracker !== 'undefined' ) {
-					window.pageTracker._trackPageview(relativeUrl);
-				}
-			};
+			rootUrl = History.getRootUrl();
 		
 		// Ajaxify our Internal Links
 		$body.find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
@@ -54,15 +45,35 @@
 			$body.addClass('loading');
 
 			// Start Fade Out
-			$content.fadeOut(800);
+			// Animating to opacity to 0 still keeps the element's height intact
+			// Which prevents that annoying pop bang issue when loading in new content
+			$content.animate({opacity:0},800);
 			
 			// Ajax Request the Traditional Page
 			$.ajax(url,{
 				success: function(data, textStatus, jqXHR){
-					loadPage(data);
+					// Update the menu
+					$menu
+						.find(activeSelector).removeClass(activeClass)
+						.siblings().andSelf()
+						.find('a[href^="'+relativeUrl+"],a[href^="'+url+'"]').addClass(activeClass);
+					
+					// Update the content
+					// Find the content in the page's html, and apply it to our current page's content
+					$content.stop(true,true);
+					$content.html($(data).find('#content')).css('opacity',100).show(); /* you could fade in here if you like */
+					
+					// Complete the change
+					if ( $content.ScrollTo||false ) { $content.ScrollTo(); } /* http://balupton.com/projects/jquery-scrollto */
+					$body.removeClass('loading');
+	
+					// Inform Google Analytics of the change
+					if ( typeof window.pageTracker !== 'undefined' ) {
+						window.pageTracker._trackPageview(relativeUrl);
+					}
 				},
 				error: function(jqXHR, textStatus, errorThrown){
-					//alert('An error occurred: '+errorThrown);
+					//alert('An error occurred loading in your content: '+errorThrown);
 					document.location = url;
 				}
 			}); // end ajax
