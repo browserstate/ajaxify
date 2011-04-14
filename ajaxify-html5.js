@@ -45,18 +45,24 @@
 			$content.fadeOut(800);
 			
 			// Ajax Request the Traditional Page
-			$.get(url,function(data){
-				// Find the content in the page's html, and apply it to our current page's content
-				$content.stop(true,true).show();
-				$content.html($(data).find('#content'));
-				if ( $content.ScrollTo||false ) $content.ScrollTo(); // http://balupton.com/projects/jquery-scrollto
-				$body.removeClass('loading');
-
-				// Inform Google Analytics of the change
-				if ( typeof pageTracker !== 'undefined' ) {
-					pageTracker._trackPageview(relativeUrl);
+			$.ajax(url,{
+				'success': function(data, textStatus, jqXHR){
+					// Find the content in the page's html, and apply it to our current page's content
+					$content.stop(true,true).show();
+					$content.html($(data).find('#content'));
+					if ( $content.ScrollTo||false ) $content.ScrollTo(); // http://balupton.com/projects/jquery-scrollto
+					$body.removeClass('loading');
+	
+					// Inform Google Analytics of the change
+					if ( typeof pageTracker !== 'undefined' ) {
+						pageTracker._trackPageview(relativeUrl);
+					}
+				},
+				'error': function(jqXHR, textStatus, errorThrown){
+					//alert('An error occurred: '+errorThrown);
+					document.location = url;
 				}
-			}); // end get
+			}); // end ajax
 
 		}); // end onStateChange
 
