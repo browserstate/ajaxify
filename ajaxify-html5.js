@@ -55,7 +55,7 @@
 			var $this = $(this), url = $this.attr('href'), title = $this.attr('title')||null, isInternalLink;
 			
 			// Check link
-			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || (/^[^.]/.test(url) && /\:/.test(url) === false);
+			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || !(/\:/).test(url);
 			return isInternalLink;
 		}).ajaxify();
 		
