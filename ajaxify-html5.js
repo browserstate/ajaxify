@@ -19,7 +19,7 @@
 			rootUrl = History.getRootUrl();
 
 		// Ajaxify our Internal Links
-		$(this).find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
+		$(window.document.body).find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
 			// Continue as normal for cmd clicks etc
 			if ( event.which == 2 || event.metaKey ) { return true; }
 			// Ajaxify this link
