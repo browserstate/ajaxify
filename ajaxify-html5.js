@@ -71,7 +71,7 @@
 						$menuChildren, contentHtml;
 					
 					// Fetch the content
-					contentHtml = ($data.find(contentSelector).filter(':first')||$data).html();
+					contentHtml = $data.find(contentSelector).filter(':first').html()||$data.html();
 					if ( !contentHtml ) {
 						document.location.href = url;
 						return false;
