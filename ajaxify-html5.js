@@ -58,7 +58,7 @@
 					$menu
 						.find(activeSelector).removeClass(activeClass)
 						.siblings().andSelf()
-						.has('a[href^="'+relativeUrl+'"],a[href^="'+url+'"]').addClass(activeClass);
+						.has('a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]').addClass(activeClass);
 					
 					// Update the content
 					// Find the content in the page's html, and apply it to our current page's content
