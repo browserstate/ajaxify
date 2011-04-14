@@ -61,10 +61,12 @@
 			$.ajax(url,{
 				success: function(data, textStatus, jqXHR){
 					// Prepare
-					var $menuChildren, contentHtml;
+					var
+						$data = $(data),
+						$menuChildren, contentHtml;
 					
 					// Fetch the content
-					contentHtml = $(data).find(contentSelector).filter(':first');
+					contentHtml = ($data.find(contentSelector).filter(':first')||$data).html();
 					if ( !contentHtml ) {
 						document.location = url;
 						return false;
@@ -78,7 +80,7 @@
 					
 					// Update the content
 					$content.stop(true,true);
-					$content.html(html).css('opacity',100).show(); /* you could fade in here if you'd like */
+					$content.html(contentHtml).css('opacity',100).show(); /* you could fade in here if you'd like */
 					
 					// Complete the change
 					if ( $content.ScrollTo||false ) { $content.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
