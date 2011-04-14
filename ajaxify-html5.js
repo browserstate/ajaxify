@@ -3,7 +3,8 @@
 	// Prepare our Variables
 	var
 		History = window.History,
-		$ = window.jQuery;
+		$ = window.jQuery,
+		document = window.document;
 
 	// Check to see if History.js is enabled for our Browser
 	if ( !History.enabled ) {
@@ -19,7 +20,7 @@
 			rootUrl = History.getRootUrl();
 
 		// Ajaxify our Internal Links
-		$(window.document.body).find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
+		$body.find('a[href^="/"],a[href^="'+rootUrl+'"]').live('click',function(event){
 			// Continue as normal for cmd clicks etc
 			if ( event.which == 2 || event.metaKey ) { return true; }
 			// Ajaxify this link
