@@ -142,17 +142,6 @@
 					if ( typeof window.pageTracker !== 'undefined' ) {
 						window.pageTracker._trackPageview(relativeUrl);
 					}
-
-					// Inform Disqus of the change
-					if ( typeof DISQUS !== 'undefined' ) {
-						DISQUS.reset({
-							reload: true,
-							config: function () {
-								this.page.identifier = window.disqus_identifier||undefined; 
-								this.page.url = window.disqus_url||url;
-							}
-						});
-					}
 				},
 				error: function(jqXHR, textStatus, errorThrown){
 					document.location.href = url;
