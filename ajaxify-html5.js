@@ -18,6 +18,7 @@
 			/* Application Specific Variables */
 			contentSelector = '#content,article:first,.article:first,.post:first',
 			$content = $(contentSelector).filter(':first'),
+			contentNode = $content.get(0),
 			$menu = $('#menu,#nav,nav:first,.nav:first').filter(':first'),
 			activeClass = 'active selected current youarehere',
 			activeSelector = '.active,.selected,.current,.youarehere',
@@ -55,8 +56,8 @@
 			// Prepare
 			var result = String(html)
 				.replace(/<\!DOCTYPE[^>]*>/i, '')
-				.replace(/<(html|head|body|title|meta)/gi,'<div id="document-$1"')
-				.replace(/<\/(html|head|body|title|meta)/gi,'</div')
+				.replace(/<(html|head|body|title|meta|script)/gi,'<div class="document-$1"')
+				.replace(/<\/(html|head|body|title|meta|script)/gi,'</div')
 			;
 			
 			// Return
@@ -114,11 +115,16 @@
 				success: function(data, textStatus, jqXHR){
 					// Prepare
 					var
-						$data = $(documentHtml(data)).find('#document-body'),
-						$menuChildren, contentHtml;
+						$data = $(documentHtml(data)),
+						$dataBody = $data.find('.document-body:first'),
+						$dataContent = $dataBody.find(contentSelector).filter(':first'),
+						$menuChildren, contentHtml, $scripts;
 					
+					// Fetch the scripts
+					$scripts = $dataContent.find('.document-script').detach();
+
 					// Fetch the content
-					contentHtml = $data.find(contentSelector).filter(':first').html()||$data.html();
+					contentHtml = $dataContent.html()||$data.html();
 					if ( !contentHtml ) {
 						document.location.href = url;
 						return false;
@@ -129,11 +135,18 @@
 					$menuChildren.filter(activeSelector).removeClass(activeClass);
 					$menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"],a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
 					if ( $menuChildren.length === 1 ) { $menuChildren.addClass(activeClass); }
-					
+
 					// Update the content
 					$content.stop(true,true);
 					$content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
 					
+					// Add the scripts
+					$scripts.each(function(){
+						var $script = $(this), scriptText = $script.html(), scriptNode = document.createElement('script');
+						scriptNode.appendChild(document.createTextNode(scriptText));
+						contentNode.appendChild(scriptNode);
+					});
+
 					// Complete the change
 					if ( $body.ScrollTo||false ) { $body.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
 					$body.removeClass('loading');
