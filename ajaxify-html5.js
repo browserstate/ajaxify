@@ -1,3 +1,4 @@
+// https://gist.github.com/854622
 (function(window,undefined){
 	
 	// Prepare our Variables
@@ -121,7 +122,10 @@
 						$menuChildren, contentHtml, $scripts;
 					
 					// Fetch the scripts
-					$scripts = $dataContent.find('.document-script').detach();
+					$scripts = $dataContent.find('.document-script');
+					if ( $scripts.length ) {
+						$scripts.detach();
+					}
 
 					// Fetch the content
 					contentHtml = $dataContent.html()||$data.html();
@@ -139,6 +143,9 @@
 					// Update the content
 					$content.stop(true,true);
 					$content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
+
+					// Update the title
+					document.title = $data.find('.document-title:first').text();
 					
 					// Add the scripts
 					$scripts.each(function(){
