@@ -145,6 +145,10 @@
 					$content.html(contentHtml).ajaxify().css('opacity',100).show(); /* you could fade in here if you'd like */
 
 					// Update the title
+					try {
+						document.getElementsByTagName('title')[0].innerHTML = title.replace('<','&lt;').replace('>','&gt;').replace(' & ',' &amp; ');
+					}
+					catch ( Exception ) { }
 					document.title = $data.find('.document-title:first').text();
 					
 					// Add the scripts
