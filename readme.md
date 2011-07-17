@@ -29,5 +29,5 @@ This will:
 ## Further Reading
 
 - [The History.js Readme: Your guide to History.js](https://github.com/balupton/history.js)
-- [Intelligent State Handling: The evolution from hashes, to hashbangs to the HTML5 History API]
+- [Intelligent State Handling: The evolution from hashes, to hashbangs to the HTML5 History API](https://github.com/balupton/history.js/wiki/Intelligent-State-Handling)
 - [The state of the HTML5 History API, why it isn't good enough and why we need History.js](https://github.com/balupton/history.js/wiki/The-State-of-the-HTML5-History-API)
