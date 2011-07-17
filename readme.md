@@ -23,7 +23,7 @@ This will:
 2. Load in the jQuery History.js Adapter
 3. Load in [History.js](https://github.com/balupton/history.js)
 4. Load in the [jQuery ScrollTo Plugin](https://github.com/balupton/jquery-scrollto) allowing our ajaxify gist to scroll nicely and smoothly to the new loaded in content
-5. Load in our Ajaxify gist :-)
+5. Load in this gist :-)
 
 
 ## Further Reading
