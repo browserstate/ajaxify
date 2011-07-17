@@ -1,4 +1,6 @@
-Stick the following into your website:
+# Ajaxify your Website with the HTML5 History API and History.js
+
+## Installation
 
 ``` html
 <!-- jQuery --> 
@@ -11,10 +13,12 @@ Stick the following into your website:
 <script defer src="http://gist.github.com/raw/854622/ajaxify-html5.js"></script> 
 ```
 
+## Explanation
+
 This will:
 
 1. Load in jQuery
 2. Load in the jQuery History.js Adapter
-3. Load in History.js
-4. Load in the jQuery ScrollTo Plugin allowing our ajaxify gist to scroll nicely and smoothly to the new loaded in content
+3. Load in [History.js](https://github.com/balupton/history.js)
+4. Load in the [jQuery ScrollTo Plugin](https://github.com/balupton/jquery-scrollto) allowing our ajaxify gist to scroll nicely and smoothly to the new loaded in content
 5. Load in our Ajaxify gist :-)
