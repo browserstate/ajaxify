@@ -1,4 +1,7 @@
-# Ajaxify your Website with the HTML5 History API and History.js
+## Welcome
+
+This gist will ajaxify your website with the HTML5 History API using History.js and ScrollTo.
+
 
 ## Installation
 
@@ -12,6 +15,7 @@
 <script defer src="http://github.com/balupton/jquery-scrollto/raw/master/scripts/jquery.scrollto.min.js"></script> 
 <script defer src="http://gist.github.com/raw/854622/ajaxify-html5.js"></script> 
 ```
+
 
 ## Explanation
 
