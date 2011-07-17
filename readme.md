@@ -1,5 +1,3 @@
-## Welcome
-
 This gist will ajaxify your website with the HTML5 History API using History.js and ScrollTo.
 
 
