@@ -28,9 +28,9 @@ This gist will ajaxify your website with the HTML5 History API using History.js 
 
 1. Check if History.js is enabled for our current browser, if it isn't then skip this gist.
 
-1. Create a way to detect our pages root url, so we can compare our links against it.
+1. Create a way to detect our page's root url, so we can compare our links against it.
 
-1. Create a way to convert the ajax repsonses into a format jQuery will understand - as jQuery is only made to handle elements which go inside the body element, not elements made for the head element.
+1. Create a way to convert the ajax repsonse into a format jQuery will understand - as jQuery is only made to handle elements which go inside the body element, not elements made for the head element.
 
 1. Define our content and menu selectors, these are using when we load in new pages. We use our content selector to find our new content within the response, and replace the existing content on our current page. We use our menu selector to update the active navigation link in our menu when the page changes.
 
@@ -38,7 +38,7 @@ This gist will ajaxify your website with the HTML5 History API using History.js 
 
 1. When a page state change occurs, we will:
 
-	1. Determine the absolute and relative urls from the passed url
+	1. Determine the absolute and relative urls from the new url
 
 	1. Use our content selector to find our current page's content and fade it out
 
