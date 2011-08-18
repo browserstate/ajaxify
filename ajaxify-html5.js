@@ -71,7 +71,7 @@
 			var $this = $(this);
 			
 			// Ajaxify
-			$this.find('a:internal').click(function(event){
+			$this.find('a:internal:not(.no-ajaxy)').click(function(event){
 				// Prepare
 				var
 					$this = $(this),
