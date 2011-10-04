@@ -11,9 +11,7 @@ This gist will ajaxify your website with the HTML5 History API using History.js 
 <script defer src="http://balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
 
 <!-- History.js --> 
-<script defer src="http://balupton.github.com/history.js/scripts/compressed/history.adapter.jquery.js"></script> 
-<script defer src="http://balupton.github.com/history.js/scripts/compressed/history.js"></script>
-<script defer src="http://gist.github.com/raw/854622/ajaxify-html5.js"></script> 
+<script defer src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script> 
 ```
 
 ## Explanation
@@ -22,8 +20,7 @@ This gist will ajaxify your website with the HTML5 History API using History.js 
 
 1. Load in jQuery
 1. Load in the [jQuery ScrollTo Plugin](https://github.com/balupton/jquery-scrollto) allowing our ajaxify gist to scroll nicely and smoothly to the new loaded in content
-1. Load in the jQuery History.js Adapter
-1. Load in [History.js](https://github.com/balupton/history.js)
+1. Load in [History.js](https://github.com/balupton/history.js) with support for jQuery, HTML4 and HTML5
 1. Load in this gist :-)
 
 ### What does this gist do?
