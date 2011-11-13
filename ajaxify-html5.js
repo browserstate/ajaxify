@@ -153,7 +153,7 @@
 					
 					// Add the scripts
 					$scripts.each(function(){
-						var $script = $(this), scriptText = $script.html(), scriptNode = document.createElement('script');
+						var $script = $(this), scriptText = $script.text(), scriptNode = document.createElement('script');
 						scriptNode.appendChild(document.createTextNode(scriptText));
 						contentNode.appendChild(scriptNode);
 					});
