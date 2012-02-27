@@ -11,7 +11,10 @@ This gist will ajaxify your website with the HTML5 History API using History.js 
 <script defer src="http://balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
 
 <!-- History.js --> 
-<script defer src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script> 
+<script defer src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+
+<!-- This Gist -->
+<script defer src="http://gist.github.com/raw/854622/ajaxify-html5.js"></script>  
 ```
 
 ## Explanation
