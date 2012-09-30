@@ -72,3 +72,10 @@ This gist will ajaxify your website with the HTML5 History API using History.js 
 - [The History.js Readme: Your guide to History.js](https://github.com/balupton/history.js)
 - [Intelligent State Handling: The evolution from hashes, to hashbangs to the HTML5 History API](https://github.com/balupton/history.js/wiki/Intelligent-State-Handling)
 - [The state of the HTML5 History API, why it isn't good enough and why we need History.js](https://github.com/balupton/history.js/wiki/The-State-of-the-HTML5-History-API)
+
+## History
+
+- v1.0.1 - 30 September, 2012
+	- Added completion event (customisable via `completedEventName` defaults to `statechangecomplete`)
+	- Updated for new Google Analytics code - [credits to](https://gist.github.com/854622#gistcomment-294951) [aspiziri](https://github.com/aspiziri)
+

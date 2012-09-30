@@ -1,3 +1,5 @@
+// History.js It!
+// v1.0.1 - 30 September, 2012
 // https://gist.github.com/854622
 (function(window,undefined){
 	
@@ -24,7 +26,9 @@
 			activeClass = 'active selected current youarehere',
 			activeSelector = '.active,.selected,.current,.youarehere',
 			menuChildrenSelector = '> li,> ul > li',
+			completedEventName = 'statechangecomplete',
 			/* Application Generic Variables */
+			$window = $(window),
 			$body = $(document.body),
 			rootUrl = History.getRootUrl(),
 			scrollOptions = {
@@ -95,7 +99,7 @@
 		$body.ajaxify();
 		
 		// Hook into State Changes
-		$(window).bind('statechange',function(){
+		$window.bind('statechange',function(){
 			// Prepare Variables
 			var
 				State = History.getState(),
@@ -161,10 +165,11 @@
 					// Complete the change
 					if ( $body.ScrollTo||false ) { $body.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
 					$body.removeClass('loading');
+					$window.trigger(completedEventName);
 	
 					// Inform Google Analytics of the change
-					if ( typeof window.pageTracker !== 'undefined' ) {
-						window.pageTracker._trackPageview(relativeUrl);
+					if ( typeof window._gaq !== 'undefined' ) {
+						window._gaq.push(['_trackPageview', relativeUrl]);
 					}
 
 					// Inform ReInvigorate of a state change
