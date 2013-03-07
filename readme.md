@@ -1,20 +1,21 @@
-This gist will ajaxify your website with the HTML5 History API using History.js and ScrollTo.
+# Ajaxify
+Ajaxify your entire website instantly with this simple drop-in script using the HTML5 History API with History.js and jQuery ScrollTo.
 
 
 ## Installation
 
 ``` html
 <!-- jQuery --> 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
  
 <!-- jQuery ScrollTo Plugin -->
-<script defer src="http://balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
+<script defer src="//balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
 
 <!-- History.js --> 
-<script defer src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+<script defer src="//browserstate.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
-<!-- This Gist -->
-<script defer src="http://gist.github.com/raw/854622/ajaxify-html5.js"></script>  
+<!-- Ajaxify -->
+<script defer src="//raw.github.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>  
 ```
 
 ## Explanation
@@ -23,7 +24,7 @@ This gist will ajaxify your website with the HTML5 History API using History.js 
 
 1. Load in jQuery
 1. Load in the [jQuery ScrollTo Plugin](https://github.com/balupton/jquery-scrollto) allowing our ajaxify gist to scroll nicely and smoothly to the new loaded in content
-1. Load in [History.js](https://github.com/balupton/history.js) with support for jQuery, HTML4 and HTML5
+1. Load in [History.js](https://github.com/browserstate/history.js) with support for jQuery, HTML4 and HTML5
 1. Load in this gist :-)
 
 ### What does this gist do?
@@ -65,13 +66,13 @@ This gist will ajaxify your website with the HTML5 History API using History.js 
 
 ## Using this Gist?
 
-[Post your website in the showcase here!](https://github.com/balupton/history.js/wiki/Showcase)
+[Post your website in the showcase here!](https://github.com/browserstate/history.js/wiki/Showcase)
 
 ## Further Reading
 
-- [The History.js Readme: Your guide to History.js](https://github.com/balupton/history.js)
-- [Intelligent State Handling: The evolution from hashes, to hashbangs to the HTML5 History API](https://github.com/balupton/history.js/wiki/Intelligent-State-Handling)
-- [The state of the HTML5 History API, why it isn't good enough and why we need History.js](https://github.com/balupton/history.js/wiki/The-State-of-the-HTML5-History-API)
+- [The History.js Readme: Your guide to History.js](https://github.com/browserstate/history.js)
+- [Intelligent State Handling: The evolution from hashes, to hashbangs to the HTML5 History API](https://github.com/browserstate/history.js/wiki/Intelligent-State-Handling)
+- [The state of the HTML5 History API, why it isn't good enough and why we need History.js](https://github.com/browserstate/history.js/wiki/The-State-of-the-HTML5-History-API)
 
 ## History
 
