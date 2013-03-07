@@ -1,6 +1,6 @@
-// History.js It!
+// Ajaxify
 // v1.0.1 - 30 September, 2012
-// https://gist.github.com/854622
+// https://github.com/browserstate/ajaxify
 (function(window,undefined){
 	
 	// Prepare our Variables
