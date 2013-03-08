@@ -6,7 +6,7 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 
 ``` html
 <!-- jQuery --> 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
  
 <!-- jQuery ScrollTo Plugin -->
 <script defer src="//balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
