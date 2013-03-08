@@ -18,6 +18,13 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 <script defer src="//raw.github.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>  
 ```
 
+## [Bookmarklet](javascript:var%20e=document.createElement('script');e.setAttribute('src','//raw.github.com/browserstate/ajaxify/master/ajaxify-bookmarklet-helper.js');document.body.appendChild(e);void(0);)
+
+``` javascript
+javascript:var%20e=document.createElement('script');e.setAttribute('src','//raw.github.com/browserstate/ajaxify/master/ajaxify-bookmarklet-helper.js');document.body.appendChild(e);void(0);
+```
+by https://gist.github.com/balupton/919358.
+
 ## Explanation
 
 ### What do the installation instructions do?
