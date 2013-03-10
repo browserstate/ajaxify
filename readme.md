@@ -6,7 +6,7 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 
 ``` html
 <!-- jQuery --> 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
  
 <!-- jQuery ScrollTo Plugin -->
 <script defer src="//balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
@@ -17,6 +17,14 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 <!-- Ajaxify -->
 <script defer src="//raw.github.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>  
 ```
+
+## Bookmarklet
+
+``` javascript
+javascript:var%20e=document.createElement('script');e.setAttribute('src','//raw.github.com/browserstate/ajaxify/master/ajaxify-bookmarklet-helper.js');document.body.appendChild(e);void(0);
+```
+
+Inspired by by https://gist.github.com/balupton/919358.
 
 ## Explanation
 
