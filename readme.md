@@ -5,17 +5,17 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 ## Installation
 
 ``` html
-<!-- jQuery --> 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
- 
-<!-- jQuery ScrollTo Plugin -->
-<script defer src="//balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<!-- History.js --> 
-<script defer src="//browserstate.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+<!-- jQuery ScrollTo Plugin -->
+<script src="//balupton.github.io/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
+
+<!-- History.js -->
+<script src="//browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
 <!-- Ajaxify -->
-<script defer src="//raw.github.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>  
+<script src="//raw.github.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
 ```
 
 ## Bookmarklet
