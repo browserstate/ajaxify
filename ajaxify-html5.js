@@ -158,7 +158,11 @@
 					// Add the scripts
 					$scripts.each(function(){
 						var $script = $(this), scriptText = $script.text(), scriptNode = document.createElement('script');
-						scriptNode.appendChild(document.createTextNode(scriptText));
+						if ( $script.attr('src') ) {
+							if ( !$script[0].async ) { scriptNode.async = false; }
+							scriptNode.src = $script.attr('src');
+						}
+    						scriptNode.appendChild(document.createTextNode(scriptText));
 						contentNode.appendChild(scriptNode);
 					});
 
