@@ -88,3 +88,6 @@ Inspired by by https://gist.github.com/balupton/919358.
 	- Added completion event (customisable via `completedEventName` defaults to `statechangecomplete`)
 	- Updated for new Google Analytics code - [credits to](https://gist.github.com/854622#gistcomment-294951) [aspiziri](https://github.com/aspiziri)
 
+## License
+
+Licensed under the [New BSD License](http://opensource.org/licenses/BSD-3-Clause)
