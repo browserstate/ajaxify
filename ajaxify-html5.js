@@ -175,6 +175,13 @@
 					if ( typeof window._gaq !== 'undefined' ) {
 						window._gaq.push(['_trackPageview', relativeUrl]);
 					}
+					
+					// Inform Piwik Analytics of change
+					if ( typeof window._paq !== 'undefined' ){
+						window._paq.push(['setDocumentTitle', document.title]);
+						window._paq.push(['setCustomUrl', url]);
+						window._paq.push(['trackPageView']);
+					}
 
 					// Inform ReInvigorate of a state change
 					if ( typeof window.reinvigorate !== 'undefined' && typeof window.reinvigorate.ajax_track !== 'undefined' ) {
