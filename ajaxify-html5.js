@@ -66,7 +66,7 @@
 			;
 			
 			// Return
-			return result;
+			return $.trim(result);
 		};
 		
 		// Ajaxify Helper
