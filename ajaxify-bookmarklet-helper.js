@@ -11,7 +11,7 @@
 
             // History.js & ScrollTo.js
             window.History || document.write('<script src="//browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"><\/script>');
-            jQuery.ScrollTo || document.write('<script src="//balupton.github.io/jquery-scrollto/scripts/jquery.scrollto.min.js"><\/script>');
+            jQuery.ScrollTo || document.write('<script src="//balupton.github.io/jquery-scrollto/lib/jquery-scrollto.js"><\/script>');
 
             interval = setInterval(function () {
                 if (window.History && window.History.initHtml4) {
