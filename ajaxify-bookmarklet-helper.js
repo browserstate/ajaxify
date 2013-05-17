@@ -18,7 +18,7 @@
                     clearInterval(interval);
 
                     // Ajaxify-html5.js
-                    document.write('<script src="//raw.github.com/browserstate/ajaxify/master/ajaxify-html5.js"><\/script>');
+                    document.write('<script src="//rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"><\/script>');
 
                     interval = setInterval(function () {
                         if (jQuery.fn.ajaxify) {
