@@ -162,7 +162,7 @@
 							if ( !$script[0].async ) { scriptNode.async = false; }
 							scriptNode.src = $script.attr('src');
 						}
-    						scriptNode.appendChild(document.createTextNode(scriptText));
+						scriptNode.text = scriptText;
 						contentNode.appendChild(scriptNode);
 					});
 
