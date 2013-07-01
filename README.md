@@ -22,7 +22,7 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 ## Bookmarklet
 
 ``` javascript
-javascript:var%20e=document.createElement('script');e.setAttribute('src','//raw.github.com/browserstate/ajaxify/master/ajaxify-bookmarklet-helper.js');document.body.appendChild(e);void(0);
+javascript:var%20e=document.createElement('script');e.setAttribute('src','//rawgithub.com/browserstate/ajaxify/master/ajaxify-bookmarklet-helper.js');document.body.appendChild(e);void(0);
 ```
 
 
