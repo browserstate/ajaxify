@@ -15,8 +15,9 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 <script src="//browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
 <!-- Ajaxify -->
-<script src="//raw.github.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
+<script src="//rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
 ```
+
 
 ## Bookmarklet
 
@@ -24,7 +25,6 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 javascript:var%20e=document.createElement('script');e.setAttribute('src','//raw.github.com/browserstate/ajaxify/master/ajaxify-bookmarklet-helper.js');document.body.appendChild(e);void(0);
 ```
 
-Inspired by by https://gist.github.com/balupton/919358.
 
 ## Explanation
 
@@ -76,17 +76,20 @@ Inspired by by https://gist.github.com/balupton/919358.
 
 [Post your website in the showcase here!](https://github.com/browserstate/history.js/wiki/Showcase)
 
+
 ## Further Reading
 
 - [The History.js Readme: Your guide to History.js](https://github.com/browserstate/history.js)
 - [Intelligent State Handling: The evolution from hashes, to hashbangs to the HTML5 History API](https://github.com/browserstate/history.js/wiki/Intelligent-State-Handling)
 - [The state of the HTML5 History API, why it isn't good enough and why we need History.js](https://github.com/browserstate/history.js/wiki/The-State-of-the-HTML5-History-API)
 
+
 ## History
 
 - v1.0.1 - 30 September, 2012
 	- Added completion event (customisable via `completedEventName` defaults to `statechangecomplete`)
 	- Updated for new Google Analytics code - [credits to](https://gist.github.com/854622#gistcomment-294951) [aspiziri](https://github.com/aspiziri)
+
 
 ## License
 
