@@ -78,6 +78,10 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 
 ## History
 
+- v1.0.2 - 31 August, 2013
+	- Added support for weebly.com navigation markup
+	- fixed compatibility issue with jQuery.fancybox images
+
 - v1.0.1 - 30 September, 2012
 	- Added completion event (customisable via `completedEventName` defaults to `statechangecomplete`)
 	- Updated for new Google Analytics code - [credits to](https://gist.github.com/854622#gistcomment-294951) [aspiziri](https://github.com/aspiziri)
