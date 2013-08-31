@@ -22,9 +22,10 @@
 			contentSelector = '#content,article:first,.article:first,.post:first',
 			$content = $(contentSelector).filter(':first'),
 			contentNode = $content.get(0),
-			$menu = $('#menu,#nav,nav:first,.nav:first').filter(':first'),
+			$menu = $('#menu,#nav,#topnav,#nav:first,.nav:first').filter(':first'),
 			activeClass = 'active selected current youarehere',
-			activeSelector = '.active,.selected,.current,.youarehere',
+			activeId = 'active',
+			activeSelector = '.active,#active,.selected,.current,.youarehere',
 			menuChildrenSelector = '> li,> ul > li',
 			completedEventName = 'statechangecomplete',
 			/* Application Generic Variables */
@@ -75,7 +76,7 @@
 			var $this = $(this);
 			
 			// Ajaxify
-			$this.find('a:internal:not(.no-ajaxy)').click(function(event){
+			$this.find('a:internal:not(.no-ajaxy,[rel])').click(function(event){
 				// Prepare
 				var
 					$this = $(this),
@@ -142,7 +143,10 @@
 					$menuChildren = $menu.find(menuChildrenSelector);
 					$menuChildren.filter(activeSelector).removeClass(activeClass);
 					$menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"],a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-					if ( $menuChildren.length === 1 ) { $menuChildren.addClass(activeClass); }
+					if ( $menuChildren.length === 1 ) { 
+						$menuChildren.addClass(activeClass); 
+						$menuChildren.id='active';
+					}
 
 					// Update the content
 					$content.stop(true,true);
