@@ -4,8 +4,6 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 
 ## Installation
 
-### Direct
-
 ``` html
 <!-- jQuery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -19,19 +17,6 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 <!-- Ajaxify -->
 <script src="//rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
 ```
-
-
-### Bookmarklet
-
-``` javascript
-javascript:var%20e=document.createElement('script');e.setAttribute('src','//rawgithub.com/browserstate/ajaxify/master/ajaxify-bookmarklet-helper.js');document.body.appendChild(e);void(0);
-```
-
-### Extension
-
-[Install the Ajaxify History.js It! Google Chrome Extension](https://github.com/browserstate/historyjsit.crx)
-
-
 
 ## Explanation
 
