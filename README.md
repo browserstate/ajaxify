@@ -5,6 +5,9 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 ## Installation
 
 ``` html
+<!-- NProgress Stylesheet -->
+<link rel="stylesheet" type="text/css" href="//rawgithub.com/rstacruz/nprogress/master/nprogress.css">
+
 <!-- jQuery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
