@@ -11,6 +11,9 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 <!-- jQuery ScrollTo Plugin -->
 <script src="//balupton.github.io/jquery-scrollto/lib/jquery-scrollto.js"></script>
 
+<!-- jQuery NProgress Plugin -->
+<script src="//rawgithub.com/rstacruz/nprogress/master/nprogress.js"></script>
+
 <!-- History.js -->
 <script src="//browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
@@ -25,6 +28,7 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 1. Load in jQuery
 1. Load in the [jQuery ScrollTo Plugin](https://github.com/balupton/jquery-scrollto) allowing our ajaxify gist to scroll nicely and smoothly to the new loaded in content
 1. Load in [History.js](https://github.com/browserstate/history.js) with support for jQuery, HTML4 and HTML5
+1. load in [NProgress.js](https://rawgithub.com/rstacruz/nprogress/master/nprogress.js) to support the sleek loading bar.
 1. Load in this gist :-)
 
 ### What does this gist do?
@@ -58,6 +62,8 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 	1. Use our menu selector to find the new page's content, and replace the current content with the new page's content
 
 	1. Fade the new content in
+	
+	1. Update the NProgress bar that the content has been loaded
 
 	1. Scroll to the new current content so the user is directed to the right place - rather than them ending up looking at the footer or something instead of your page's content due to the height shift with the content change
 
@@ -80,6 +86,7 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 
 - v1.0.2 - 31 August, 2013
 	- Added support for weebly.com navigation markup
+	- Added NProgress.js integration
 	- fixed compatibility issue with jQuery.fancybox images
 
 - v1.0.1 - 30 September, 2012
