@@ -36,6 +36,7 @@
 				duration: 800,
 				easing:'swing'
 			};
+		NProgress.configure({ showSpinner: false });
 		
 		// Ensure Content
 		if ( $content.length === 0 ) {
@@ -109,6 +110,7 @@
 
 			// Set Loading
 			$body.addClass('loading');
+			NProgress.start();
 
 			// Start Fade Out
 			// Animating to opacity to 0 still keeps the element's height intact
@@ -170,6 +172,8 @@
     						scriptNode.appendChild(document.createTextNode(scriptText));
 						contentNode.appendChild(scriptNode);
 					});
+					
+					NProgress.done();
 
 					// Complete the change
 					if ( $body.ScrollTo||false ) { $body.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
