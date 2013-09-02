@@ -110,7 +110,7 @@
 
 			// Set Loading
 			$body.addClass('loading');
-			if (NProgress) NProgress.start();
+			if (NProgress != undefined) NProgress.start();
 
 			// Start Fade Out
 			// Animating to opacity to 0 still keeps the element's height intact
@@ -174,7 +174,7 @@
 					});
 					
 					if(NProgress) NProgress.done();
-					if(DISQUS) {DISQUS.next.host.loader.loadEmbed();console.log('DISQUS Detected')}
+					if(DISQUS != undefined) {DISQUS.next.host.loader.loadEmbed();console.log('DISQUS Detected')}
 
 					// Complete the change
 					if ( $body.ScrollTo||false ) { $body.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
