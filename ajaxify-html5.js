@@ -174,7 +174,7 @@
 					});
 					
 					if(NProgress) NProgress.done();
-					if(DISQUS) DISQUS.next.host.loader.loadEmbed();
+					if(DISQUS) {DISQUS.next.host.loader.loadEmbed();console.log('DISQUS Detected')}
 
 					// Complete the change
 					if ( $body.ScrollTo||false ) { $body.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
