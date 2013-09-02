@@ -90,7 +90,8 @@ Ajaxify your entire website instantly with this simple drop-in script using the 
 - v1.0.2 - 31 August, 2013
 	- Added support for weebly.com navigation markup
 	- Added NProgress.js integration
-	- fixed compatibility issue with jQuery.fancybox images
+	- Fixed compatibility issue with jQuery.fancybox images
+	- Added integration with DISQUS Comments
 
 - v1.0.1 - 30 September, 2012
 	- Added completion event (customisable via `completedEventName` defaults to `statechangecomplete`)
