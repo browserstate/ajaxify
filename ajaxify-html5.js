@@ -172,8 +172,8 @@
 					$window.trigger(completedEventName);
 	
 					// Inform Google Analytics of the change
-					if ( typeof window._gaq !== 'undefined' ) {
-						window._gaq.push(['_trackPageview', relativeUrl]);
+					if ( typeof window.ga !== 'undefined' ) {
+						window.ga('send', 'pageview', relativeUrl);
 					}
 
 					// Inform ReInvigorate of a state change
