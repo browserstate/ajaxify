@@ -173,7 +173,11 @@
 	
 					// Inform Google Analytics of the change
 					if ( typeof window.ga !== 'undefined' ) {
+						// Universal Analytics
 						window.ga('send', 'pageview', relativeUrl);
+					} else if ( typeof window._gaq !== 'undefined' ) {
+						// Legacy analytics
+						window._gaq.push(['_trackPageview', relativeUrl]);
 					}
 
 					// Inform ReInvigorate of a state change
