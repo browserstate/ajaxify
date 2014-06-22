@@ -1,6 +1,6 @@
 // Ajaxify
 // v1.0.2 - 31 August, 2013
-// https://github.com/browserstate/ajaxify
+// https://github.com/TjWallas/ajaxify
 (function(window,undefined){
 	
 	// Prepare our Variables
