@@ -1,6 +1,6 @@
 // Ajaxify
-// v1.0.1 - 30 September, 2012
-// https://github.com/browserstate/ajaxify
+// v1.0.2 - 31 August, 2013
+// https://github.com/TjWallas/ajaxify
 (function(window,undefined){
 	
 	// Prepare our Variables
@@ -22,9 +22,10 @@
 			contentSelector = '#content,article:first,.article:first,.post:first',
 			$content = $(contentSelector).filter(':first'),
 			contentNode = $content.get(0),
-			$menu = $('#menu,#nav,nav:first,.nav:first').filter(':first'),
+			$menu = $('#menu,#nav,#topnav,#nav:first,.nav:first').filter(':first'),
 			activeClass = 'active selected current youarehere',
-			activeSelector = '.active,.selected,.current,.youarehere',
+			activeId = 'active',
+			activeSelector = '.active,#active,.selected,.current,.youarehere',
 			menuChildrenSelector = '> li,> ul > li',
 			completedEventName = 'statechangecomplete',
 			/* Application Generic Variables */
@@ -35,6 +36,7 @@
 				duration: 800,
 				easing:'swing'
 			};
+		NProgress.configure({ showSpinner: false });
 		
 		// Ensure Content
 		if ( $content.length === 0 ) {
@@ -75,7 +77,7 @@
 			var $this = $(this);
 			
 			// Ajaxify
-			$this.find('a:internal:not(.no-ajaxy)').click(function(event){
+			$this.find('a:internal:not(.no-ajaxy,[rel])').click(function(event){
 				// Prepare
 				var
 					$this = $(this),
@@ -108,6 +110,7 @@
 
 			// Set Loading
 			$body.addClass('loading');
+			if (NProgress != undefined) NProgress.start();
 
 			// Start Fade Out
 			// Animating to opacity to 0 still keeps the element's height intact
@@ -141,8 +144,12 @@
 					// Update the menu
 					$menuChildren = $menu.find(menuChildrenSelector);
 					$menuChildren.filter(activeSelector).removeClass(activeClass);
+					$menuChildren.filter(activeSelector).attr('id','deselected');
 					$menuChildren = $menuChildren.has('a[href^="'+relativeUrl+'"],a[href^="/'+relativeUrl+'"],a[href^="'+url+'"]');
-					if ( $menuChildren.length === 1 ) { $menuChildren.addClass(activeClass); }
+					if ( $menuChildren.length === 1 ) { 
+						$menuChildren.addClass(activeClass); 
+						$menuChildren.attr('id','active');
+					}
 
 					// Update the content
 					$content.stop(true,true);
@@ -165,6 +172,9 @@
     						scriptNode.appendChild(document.createTextNode(scriptText));
 						contentNode.appendChild(scriptNode);
 					});
+					
+					if(NProgress) NProgress.done();
+					if((DISQUS != undefined) && ($content.find('#disqus_thread').length != 0)) {DISQUS.next.host.loader.loadEmbed();console.log('DISQUS Detected')}
 
 					// Complete the change
 					if ( $body.ScrollTo||false ) { $body.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */

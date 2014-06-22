@@ -1,37 +1,33 @@
 # Ajaxify
-Ajaxify your entire website instantly with this simple drop-in script using the HTML5 History API with History.js and jQuery ScrollTo.
+Ajaxify your entire website instantly with this simple drop-in script using the HTML5 History API with History.js and jQuery ScrollTo. This is a fork of https://github.com/browserstate/ajaxify that fixes some incompatibility issues with other plugins and adds support for disqus comments, NProgress.js and weebly.com hosted websites. See version History for more details on the new features this fork adds.
 
+## Demo
+Check out how I sexfied my free weebly website: [http://tjwallas.weebly.com](http://tjwallas.weebly.com)
 
 ## Installation
 
-### Direct
-
 ``` html
+<!-- NProgress Stylesheet -->
+<link rel="stylesheet" type="text/css" href="//rawgithub.com/rstacruz/nprogress/master/nprogress.css">
+
 <!-- jQuery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <!-- jQuery ScrollTo Plugin -->
 <script src="//balupton.github.io/jquery-scrollto/lib/jquery-scrollto.js"></script>
 
+<!-- jQuery NProgress Plugin -->
+<script src="//rawgithub.com/rstacruz/nprogress/master/nprogress.js"></script>
+
 <!-- History.js -->
 <script src="//browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
 <!-- Ajaxify -->
-<script src="//rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
+<script src="//raw.githubusercontent.com/TjWallas/ajaxify/master/ajaxify-html5.js"></script>
 ```
+### Limitations
 
-
-### Bookmarklet
-
-``` javascript
-javascript:var%20e=document.createElement('script');e.setAttribute('src','//rawgithub.com/browserstate/ajaxify/master/ajaxify-bookmarklet-helper.js');document.body.appendChild(e);void(0);
-```
-
-### Extension
-
-[Install the Ajaxify History.js It! Google Chrome Extension](https://github.com/browserstate/historyjsit.crx)
-
-
+The hard-coded variables in the source code ensure compatability with popular CMS such as wordpress and typical markup for content and navigation div wraping. You might need to make sure your HTML markup complies with these variables. More specifically, the content selector, the navigation list selector as well as the active navigation class.
 
 ## Explanation
 
@@ -40,7 +36,8 @@ javascript:var%20e=document.createElement('script');e.setAttribute('src','//rawg
 1. Load in jQuery
 1. Load in the [jQuery ScrollTo Plugin](https://github.com/balupton/jquery-scrollto) allowing our ajaxify gist to scroll nicely and smoothly to the new loaded in content
 1. Load in [History.js](https://github.com/browserstate/history.js) with support for jQuery, HTML4 and HTML5
-1. Load in this gist :-)
+1. load in [NProgress.js](https://rawgithub.com/rstacruz/nprogress/master/nprogress.js) to support the sleek loading bar.
+1. Load in this ajaxify magic ;)
 
 ### What does this gist do?
 
@@ -52,7 +49,7 @@ javascript:var%20e=document.createElement('script');e.setAttribute('src','//rawg
 
 1. Define our content and menu selectors, these are using when we load in new pages. We use our content selector to find our new content within the response, and replace the existing content on our current page. We use our menu selector to update the active navigation link in our menu when the page changes.
 
-1. Discover our internal links on our website, and upgrade them so when they are clicked it instead of changing the page to the new page, it will change our page's state to the new page. Links with the class `no-ajaxy` will not be upgraded.
+1. Discover our internal links on our website, and upgrade them so when they are clicked it instead of changing the page to the new page, it will change our page's state to the new page. Links with the class `no-ajaxy` or links that have a `rel` attribute will not be upgraded. This allows compatability with other plugins like jQuery.fancybox
 
 1. When a page state change occurs, we will:
 
@@ -73,6 +70,10 @@ javascript:var%20e=document.createElement('script');e.setAttribute('src','//rawg
 	1. Use our menu selector to find the new page's content, and replace the current content with the new page's content
 
 	1. Fade the new content in
+	
+	1. Update the NProgress bar that the content has been loaded
+	
+	1. If DISQUS was detected, load in the DISQUS comments for the new page URL
 
 	1. Scroll to the new current content so the user is directed to the right place - rather than them ending up looking at the footer or something instead of your page's content due to the height shift with the content change
 
@@ -92,6 +93,12 @@ javascript:var%20e=document.createElement('script');e.setAttribute('src','//rawg
 
 
 ## History
+
+- v1.0.2 - 31 August, 2013
+	- Added support for weebly.com navigation markup
+	- Added NProgress.js integration
+	- Fixed compatibility issue with jQuery.fancybox images
+	- Added integration with DISQUS Comments
 
 - v1.0.1 - 30 September, 2012
 	- Added completion event (customisable via `completedEventName` defaults to `statechangecomplete`)
