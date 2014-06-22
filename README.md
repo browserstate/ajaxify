@@ -1,5 +1,5 @@
 # Ajaxify
-Ajaxify your entire website instantly with this simple drop-in script using the HTML5 History API with History.js and jQuery ScrollTo.
+Ajaxify your entire website instantly with this simple drop-in script using the HTML5 History API with History.js and jQuery ScrollTo. This is a fork of https://github.com/browserstate/ajaxify that fixes some incompatibility issues with other plugins and adds support for disqus comments, NProgress.js and weebly.com hosted websites. See version History for more details on the new features this fork adds.
 
 ## Demo
 Check out how I sexfied my free weebly website: [http://tjwallas.weebly.com](http://tjwallas.weebly.com)
@@ -23,7 +23,7 @@ Check out how I sexfied my free weebly website: [http://tjwallas.weebly.com](htt
 <script src="//browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
 <!-- Ajaxify -->
-<script src="//rawgithub.com/browserstate/ajaxify/master/ajaxify-html5.js"></script>
+<script src="//raw.githubusercontent.com/TjWallas/ajaxify/master/ajaxify-html5.js"></script>
 ```
 
 ## Explanation
@@ -34,7 +34,7 @@ Check out how I sexfied my free weebly website: [http://tjwallas.weebly.com](htt
 1. Load in the [jQuery ScrollTo Plugin](https://github.com/balupton/jquery-scrollto) allowing our ajaxify gist to scroll nicely and smoothly to the new loaded in content
 1. Load in [History.js](https://github.com/browserstate/history.js) with support for jQuery, HTML4 and HTML5
 1. load in [NProgress.js](https://rawgithub.com/rstacruz/nprogress/master/nprogress.js) to support the sleek loading bar.
-1. Load in this gist :-)
+1. Load in this ajaxify magic ;)
 
 ### What does this gist do?
 
@@ -46,7 +46,7 @@ Check out how I sexfied my free weebly website: [http://tjwallas.weebly.com](htt
 
 1. Define our content and menu selectors, these are using when we load in new pages. We use our content selector to find our new content within the response, and replace the existing content on our current page. We use our menu selector to update the active navigation link in our menu when the page changes.
 
-1. Discover our internal links on our website, and upgrade them so when they are clicked it instead of changing the page to the new page, it will change our page's state to the new page. Links with the class `no-ajaxy` will not be upgraded.
+1. Discover our internal links on our website, and upgrade them so when they are clicked it instead of changing the page to the new page, it will change our page's state to the new page. Links with the class `no-ajaxy` or links that have a `rel` attribute will not be upgraded. This allows compatability with other plugins like jQuery.fancybox
 
 1. When a page state change occurs, we will:
 
@@ -69,6 +69,8 @@ Check out how I sexfied my free weebly website: [http://tjwallas.weebly.com](htt
 	1. Fade the new content in
 	
 	1. Update the NProgress bar that the content has been loaded
+	
+	1. If DISQUS was detected, load in the DISQUS comments for the new page URL
 
 	1. Scroll to the new current content so the user is directed to the right place - rather than them ending up looking at the footer or something instead of your page's content due to the height shift with the content change
 
