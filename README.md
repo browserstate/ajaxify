@@ -25,6 +25,9 @@ Check out how I sexfied my free weebly website: [http://tjwallas.weebly.com](htt
 <!-- Ajaxify -->
 <script src="//raw.githubusercontent.com/TjWallas/ajaxify/master/ajaxify-html5.js"></script>
 ```
+### Limitations
+
+The hard-coded variables in the source code ensure compatability with popular CMS such as wordpress and typical markup for content and navigation div wraping. You might need to make sure your HTML markup complies with these variables. More specifically, the content selector, the navigation list selector as well as the active navigation class.
 
 ## Explanation
 
