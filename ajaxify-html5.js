@@ -68,8 +68,21 @@
 			// Return
 			return $.trim(result);
 		};
-		
-		// Ajaxify Helper
+
+        // Get body CSS classes
+        var getBodyClasses = function(html){
+            // Prepare
+            var matches = html.match(/<body.*class="(.+)".*>/i);
+
+            // Return
+            if ($.isArray(matches) && matches.length > 1) {
+                return $.trim(matches[1]);
+            } else {
+                return '';
+            }
+        };
+
+        // Ajaxify Helper
 		$.fn.ajaxify = function(){
 			// Prepare
 			var $this = $(this);
@@ -123,8 +136,9 @@
 						$data = $(documentHtml(data)),
 						$dataBody = $data.find('.document-body:first'),
 						$dataContent = $dataBody.find(contentSelector).filter(':first'),
-						$menuChildren, contentHtml, $scripts;
-					
+						$menuChildren, contentHtml, $scripts,
+                        bodyClasses = getBodyClasses(data);
+
 					// Fetch the scripts
 					$scripts = $dataContent.find('.document-script');
 					if ( $scripts.length ) {
@@ -154,8 +168,14 @@
 						document.getElementsByTagName('title')[0].innerHTML = document.title.replace('<','&lt;').replace('>','&gt;').replace(' & ',' &amp; ');
 					}
 					catch ( Exception ) { }
-					
-					// Add the scripts
+
+                    // Update the body CSS classes
+                    try {
+                        document.getElementsByTagName('body')[0].className = bodyClasses;
+                    }
+                    catch ( Exception ) { }
+
+                    // Add the scripts
 					$scripts.each(function(){
 						var $script = $(this), scriptText = $script.text(), scriptNode = document.createElement('script');
 						if ( $script.attr('src') ) {
