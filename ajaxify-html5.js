@@ -49,11 +49,10 @@
 				url = $this.attr('href')||'',
 				isInternalLink;
 			
-			// Check link
-			isInternalLink = url.substring(0,rootUrl.length) === rootUrl || url.indexOf(':') === -1;
-			
-			// Ignore or Keep
-			return isInternalLink;
+			var match = url.match(/^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/);
+			if (typeof match[1] === "string" && match[1].length > 0 && match[1].toLowerCase() !== location.protocol) return false;
+			if (typeof match[2] === "string" && match[2].length > 0 && match[2].replace(new RegExp(":("+{"http:":80,"https:":443}[location.protocol]+")?$"), "") !== location.host) return false;
+			return true;
 		};
 		
 		// HTML Helper
