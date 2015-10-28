@@ -1,5 +1,5 @@
 // Ajaxify
-// v1.0.1 - 30 September, 2012
+// v1.0.2, October 2015
 // https://github.com/browserstate/ajaxify
 (function(window,undefined){
 	
@@ -167,12 +167,20 @@
 					});
 
 					// Complete the change
-					if ( $body.ScrollTo||false ) { $body.ScrollTo(scrollOptions); } /* http://balupton.com/projects/jquery-scrollto */
+					if ( $body.ScrollTo ) {
+						$body.ScrollTo(scrollOptions); 
+					} /* http://balupton.com/projects/jquery-scrollto */
+					else{
+						// fallback if scrollTo plugin is not loaded:
+						$body.scrollTop( 0 );
+					}
 					$body.removeClass('loading');
 					$window.trigger(completedEventName);
 	
 					// Inform Google Analytics of the change
-					if ( typeof window._gaq !== 'undefined' ) {
+					if ( typeof window.ga !== 'undefined' ){  // the new analytics API
+						window.ga( 'send', 'pageview', relativeUrl );
+					}else if ( typeof window._gaq !== 'undefined' ) {  // the old API
 						window._gaq.push(['_trackPageview', relativeUrl]);
 					}
 
